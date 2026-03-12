@@ -477,33 +477,33 @@ export default function PatternJ() {
             <div className="max-w-4xl mx-auto">
               <div className="mb-20 text-center">
                 <h2 className="text-4xl md:text-7xl font-light italic mb-6">Contact Us.</h2>
-                <p className="text-lg opacity-60 tracking-widest uppercase">Let's start your story</p>
+                <p className="text-lg opacity-60 tracking-widest uppercase">お問い合わせ・ご予約</p>
               </div>
               <form className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest opacity-40">Name</label>
-                    <input type="text" className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors" placeholder="Your Name" />
+                    <label className="text-[10px] uppercase tracking-widest opacity-40">お名前</label>
+                    <input type="text" className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors" placeholder="山田 太郎" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest opacity-40">Email</label>
+                    <label className="text-[10px] uppercase tracking-widest opacity-40">メールアドレス</label>
                     <input type="email" className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors" placeholder="hello@example.com" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest opacity-40">Subject</label>
+                  <label className="text-[10px] uppercase tracking-widest opacity-40">お問い合わせ項目</label>
                   <select className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors appearance-none">
-                    <option>General Inquiry</option>
-                    <option>Booking Request</option>
-                    <option>Plan Consultation</option>
+                    <option>プランのご相談</option>
+                    <option>撮影のご予約</option>
+                    <option>その他のお問い合わせ</option>
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] uppercase tracking-widest opacity-40">Message</label>
-                  <textarea rows={5} className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors resize-none" placeholder="How can we help you?"></textarea>
+                  <label className="text-[10px] uppercase tracking-widest opacity-40">メッセージ内容</label>
+                  <textarea rows={5} className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors resize-none" placeholder="撮影のご希望日や、ご質問などご自由にご記入ください。"></textarea>
                 </div>
                 <div className="pt-10">
-                  <button className="w-full md:w-auto px-12 py-5 rounded-full bg-[#4E342E] text-white hover:bg-[#5D4037] transition-all uppercase tracking-[0.3em] text-xs font-bold shadow-xl">Send Message</button>
+                  <button className="w-full md:w-auto px-12 py-5 rounded-full bg-[#4E342E] text-white hover:bg-[#5D4037] transition-all uppercase tracking-[0.3em] text-xs font-bold shadow-xl">送信する</button>
                 </div>
               </form>
             </div>
