@@ -665,19 +665,9 @@ export default function PatternJ() {
 
   return (
     <div className="min-h-screen bg-[#F9F7F5] text-[#4E342E] font-serif-cormorant selection:bg-[#4E342E] selection:text-white">
-      {/* Immersive Vertical Header */}
-      <aside className="hidden md:flex fixed left-0 top-0 h-full w-20 border-r border-[#4E342E]/10 z-50 flex-col items-center justify-between py-12 bg-[#F9F7F5]">
-        <div className="rotate-90 text-[10px] uppercase tracking-[0.5em] whitespace-nowrap opacity-40">Est. 2026</div>
-        <button 
-          onClick={() => setCurrentPage('home')}
-          className="w-10 h-10 rounded-full bg-[#4E342E] flex items-center justify-center text-white hover:scale-110 transition-transform"
-        >
-          <Star className="w-4 h-4" />
-        </button>
-        <div className="rotate-90 text-[10px] uppercase tracking-[0.5em] whitespace-nowrap opacity-40">Roots Studio</div>
-      </aside>
 
-      <main className="md:pl-20">
+
+      <main>
         {/* Top Right Navigation */}
         <nav className="fixed md:absolute top-0 md:top-10 right-0 md:right-10 z-[60] w-full md:w-auto flex flex-wrap justify-center md:justify-end gap-2 md:gap-4 lg:gap-6 p-4 md:p-0 bg-[#F9F7F5]/80 backdrop-blur-md md:bg-transparent border-b border-[#4E342E]/5 md:border-none text-[9px] md:text-[11px] uppercase tracking-[0.1em] md:tracking-[0.3em] font-bold items-center">
           {navLinks.map((link) => (
