@@ -513,34 +513,68 @@ export default function PatternJ() {
         return (
           <>
             {/* Hero: Centered Logo & Immersive Image */}
-            <section className="h-screen relative flex items-center justify-center overflow-hidden">
+            <section className="h-screen relative flex flex-col items-center justify-center overflow-hidden">
               <motion.div 
                 style={{ y }}
                 className="absolute inset-0 z-0"
               >
                 <img 
                   src="https://picsum.photos/seed/roots-j-hero/1920/1080" 
-                  className="w-full h-full object-cover brightness-90"
+                  className="w-full h-full object-cover scale-[1.05]"
                   alt="Hero"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>
-              <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]" />
               
-              <div className="relative z-10 text-center">
+              {/* Premium Gradual Lighting Overlay for Readability */}
+              <div className="absolute inset-0 z-[1] bg-black/10" />
+              <div 
+                className="absolute inset-0 z-[2] mix-blend-screen pointer-events-none"
+                style={{
+                  background: 'radial-gradient(circle at center, rgba(249,247,245,0.85) 0%, rgba(249,247,245,0.2) 40%, transparent 70%)'
+                }} 
+              />
+              <div 
+                className="absolute inset-0 z-[3] mix-blend-color-burn pointer-events-none"
+                style={{
+                  background: 'radial-gradient(circle at center, rgba(93,64,55,0) 0%, rgba(93,64,55,0.1) 60%, rgba(0,0,0,0.4) 100%)'
+                }} 
+              />
+              
+              <div className="relative z-10 text-center flex flex-col items-center justify-center w-full mt-10">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1.5 }}
+                  initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex flex-col items-center"
                 >
                   <h1 
-                    className="text-5xl sm:text-8xl md:text-[12vw] font-serif-playfair leading-none mb-8 tracking-tighter"
-                    style={{ color: logoColor }}
+                    className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[10vw] font-serif-playfair leading-[0.85] tracking-tighter mb-10 text-center flex flex-col items-center"
+                    style={{ 
+                      color: logoColor,
+                      textShadow: '0 10px 40px rgba(255,255,255,0.8), 0 0 16px rgba(255,255,255,0.6)'
+                    }}
                   >
-                    Roots <br /> Studio
+                    Roots
+                    <span className="italic font-light opacity-90 indent-[10vw]">Studio</span>
                   </h1>
-                  <p className="text-lg md:text-2xl tracking-[0.3em] md:tracking-[0.4em] uppercase opacity-60">
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <p 
+                    className="text-xs md:text-xl font-medium tracking-[0.4em] md:tracking-[0.6em] uppercase flex items-center gap-4"
+                    style={{ 
+                      color: logoColor,
+                      textShadow: '0 4px 20px rgba(255,255,255,0.9)'
+                    }}
+                  >
+                    <span className="w-6 md:w-12 h-px bg-current opacity-40" />
                     人生の節目に、何度でも。
+                    <span className="w-6 md:w-12 h-px bg-current opacity-40" />
                   </p>
                 </motion.div>
               </div>
