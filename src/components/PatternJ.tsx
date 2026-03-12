@@ -668,8 +668,8 @@ export default function PatternJ() {
 
 
       <main>
-        {/* Top Right Navigation */}
-        <nav className="fixed md:absolute top-0 md:top-10 right-0 md:right-10 z-[60] w-full md:w-auto flex flex-wrap justify-center md:justify-end gap-2 md:gap-4 lg:gap-6 p-4 md:p-0 bg-[#F9F7F5]/80 backdrop-blur-md md:bg-transparent border-b border-[#4E342E]/5 md:border-none text-[9px] md:text-[11px] uppercase tracking-[0.1em] md:tracking-[0.3em] font-bold items-center">
+        {/* Centered Floating Navigation */}
+        <nav className="fixed top-6 md:top-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-1 md:gap-2 p-1.5 md:p-2 bg-[#F9F7F5]/85 backdrop-blur-2xl border border-white/40 rounded-full shadow-[0_20px_40px_rgba(78,52,46,0.08),0_1px_3px_rgba(78,52,46,0.05)] text-[9px] md:text-[11px] uppercase tracking-[0.15em] md:tracking-[0.2em] font-medium transition-all w-max max-w-[95vw] overflow-x-auto no-scrollbar">
           {navLinks.map((link) => (
             <button 
               key={link.id}
@@ -677,17 +677,24 @@ export default function PatternJ() {
                 setCurrentPage(link.id);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className={`px-2.5 md:px-4 py-1.5 md:py-2 rounded-full border border-[#4E342E]/10 transition-all whitespace-nowrap ${
-                currentPage === link.id ? 'bg-[#4E342E] text-white' : 'hover:bg-[#4E342E] hover:text-white'
+              className={`px-4 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-500 whitespace-nowrap ${
+                currentPage === link.id 
+                  ? 'bg-white font-bold shadow-sm' 
+                  : 'hover:bg-white/50 opacity-60 hover:opacity-100'
               }`}
-              style={{ color: currentPage === link.id ? 'white' : logoColor }}
+              style={{ color: logoColor }}
             >
               {link.label}
             </button>
           ))}
-          <a href="#" className="flex items-center gap-1.5 md:gap-2 px-3 md:px-5 py-1.5 md:py-2 rounded-full border border-[#4E342E]/10 md:border-[#4E342E]/10 hover:bg-[#4E342E] hover:text-white transition-all whitespace-nowrap" style={{ color: logoColor }}>
-            <LineIcon className="w-3 h-3 md:w-4 md:h-4" />
-            <span className="text-[8px] md:text-[10px]">LINEで相談</span>
+          <div className="w-px h-6 bg-[#4E342E]/10 mx-2 md:mx-3 shrink-0" />
+          <a 
+            href="#" 
+            className="group flex items-center gap-2 px-5 md:px-8 py-2.5 md:py-3 rounded-full text-white transition-all duration-500 whitespace-nowrap shadow-md hover:shadow-xl hover:-translate-y-0.5 shrink-0"
+            style={{ backgroundColor: logoColor }}
+          >
+            <LineIcon className="w-3.5 h-3.5 md:w-4 md:h-4 opacity-90 group-hover:opacity-100 transition-opacity" />
+            <span className="text-[10px] md:text-xs tracking-[0.2em] font-bold">LINE相談</span>
           </a>
         </nav>
 
