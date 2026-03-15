@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform, AnimatePresence, useSpring } from 'motion/react';
 import { Heart, Star, Camera, Users, Instagram } from 'lucide-react';
 
 import { MessageCircle } from 'lucide-react';
@@ -26,6 +26,7 @@ export default function PatternJ() {
   const [currentPage, setCurrentPage] = React.useState<'home' | 'gallery' | 'plan' | 'contact'>('home');
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
   const [heroIdx, setHeroIdx] = React.useState(0);
   const [isWhiteout, setIsWhiteout] = React.useState(false);
 
@@ -53,34 +54,44 @@ export default function PatternJ() {
     switch (currentPage) {
       case 'gallery':
         return (
-          <motion.section 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="py-20 md:py-40 px-6 md:px-20 min-h-screen"
-          >
+          <section className="py-20 md:py-40 px-6 md:px-20 min-h-screen">
             <div className="max-w-6xl mx-auto">
-              <div className="mb-20">
-                <h2 className="text-4xl md:text-7xl font-light italic mb-6">Gallery.</h2>
-                <p className="text-lg opacity-60 tracking-widest uppercase">Captured Moments of Life</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-16 md:mb-20"
+              >
+                <h2 className="text-4xl md:text-7xl font-light italic mb-4">Gallery.</h2>
+                <p className="text-sm md:text-lg opacity-60 tracking-widest uppercase">Captured Moments of Life</p>
+              </motion.div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
-                    whileHover={{ scale: 1.02 }}
-                    className={`relative overflow-hidden rounded-2xl bg-stone-200 ${i % 4 === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                    initial={{ opacity: 0, scale: 0.94 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.7, delay: ((i - 1) % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    whileHover={{ scale: 1.03, zIndex: 10 }}
+                    className={`relative overflow-hidden rounded-2xl bg-stone-200 ${i === 4 ? 'col-span-2 md:col-span-1' : ''}`}
                   >
-                    <img 
-                      src={`https://picsum.photos/seed/gallery-${i}/800/1200`} 
-                      className="w-full h-full object-cover aspect-[3/4] md:aspect-auto"
+                    <img
+                      src={`https://picsum.photos/seed/gallery-${i}/800/1200`}
+                      className="w-full h-full object-cover aspect-[3/4]"
                       alt={`Gallery ${i}`}
                       referrerPolicy="no-referrer"
+                    />
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      className="absolute inset-0 bg-[#4E342E]/20 transition-all"
                     />
                   </motion.div>
                 ))}
               </div>
             </div>
-          </motion.section>
+          </section>
         );
       case 'plan':
         return (
@@ -215,6 +226,10 @@ export default function PatternJ() {
                   ].map((cat) => (
                     <motion.div
                       key={cat.target}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ duration: 0.7, delay: ["wedding-collection","family-collection","my-roots-collection"].indexOf(cat.target) * 0.15 }}
                       whileHover={{ y: -6 }}
                       onClick={() => {
                         const el = document.getElementById(cat.target);
@@ -247,11 +262,17 @@ export default function PatternJ() {
             {/* Wedding Collection */}
             <div id="wedding-collection" className="scroll-mt-24 px-6 md:px-20 pb-20 md:pb-32">
               <div className="max-w-6xl mx-auto">
-                <div className="flex items-end gap-6 mb-12 pb-6 border-b border-[#4E342E]/10">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="flex items-end gap-6 mb-12 pb-6 border-b border-[#4E342E]/10"
+                >
                   <span className="text-[10px] uppercase tracking-[0.4em] opacity-30 mb-1">01</span>
                   <h2 className="text-3xl md:text-4xl italic" style={{ color: "#5D4037" }}>Wedding</h2>
                   <p className="text-sm opacity-40 mb-1 hidden md:block">誓いの瞬間を、二人だけの形に</p>
-                </div>
+                </motion.div>
 
                 {/* Featured first card */}
                 {(() => {
@@ -304,11 +325,17 @@ export default function PatternJ() {
             {/* Family Collection */}
             <div id="family-collection" className="scroll-mt-24 px-6 md:px-20 py-16 md:py-24 bg-white">
               <div className="max-w-6xl mx-auto">
-                <div className="flex items-end gap-6 mb-12 pb-6 border-b border-[#4E342E]/10">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="flex items-end gap-6 mb-12 pb-6 border-b border-[#4E342E]/10"
+                >
                   <span className="text-[10px] uppercase tracking-[0.4em] opacity-30 mb-1">02</span>
                   <h2 className="text-3xl md:text-4xl italic" style={{ color: "#5D4037" }}>Family</h2>
                   <p className="text-sm opacity-40 mb-1 hidden md:block">家族の絆を、世代を超えて残す</p>
-                </div>
+                </motion.div>
 
                 {/* Featured first card */}
                 {(() => {
@@ -363,11 +390,17 @@ export default function PatternJ() {
             {/* My Roots Collection */}
             <div id="my-roots-collection" className="scroll-mt-24 px-6 md:px-20 py-16 md:py-24">
               <div className="max-w-6xl mx-auto">
-                <div className="flex items-end gap-6 mb-12 pb-6 border-b border-[#4E342E]/10">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="flex items-end gap-6 mb-12 pb-6 border-b border-[#4E342E]/10"
+                >
                   <span className="text-[10px] uppercase tracking-[0.4em] opacity-30 mb-1">03</span>
                   <h2 className="text-3xl md:text-4xl italic" style={{ color: "#5D4037" }}>My Roots</h2>
                   <p className="text-sm opacity-40 mb-1 hidden md:block">自分らしさを探究する、個のための撮影</p>
-                </div>
+                </motion.div>
 
                 {/* Featured first card */}
                 {(() => {
@@ -450,18 +483,24 @@ export default function PatternJ() {
         );
       case 'contact':
         return (
-          <motion.section 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="py-20 md:py-40 px-6 md:px-20 min-h-screen"
-          >
+          <section className="py-20 md:py-40 px-6 md:px-20 min-h-screen">
             <div className="max-w-4xl mx-auto">
-              <div className="mb-20 text-center">
-                <h2 className="text-4xl md:text-7xl font-light italic mb-6">Contact Us.</h2>
-                <p className="text-lg opacity-60 tracking-widest uppercase">お問い合わせ・ご予約</p>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-16 md:mb-20 text-center"
+              >
+                <h2 className="text-4xl md:text-7xl font-light italic mb-4">Contact Us.</h2>
+                <p className="text-sm md:text-lg opacity-60 tracking-widest uppercase">お問い合わせ・ご予約</p>
+              </motion.div>
               <form className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.15 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                >
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest opacity-40">お名前</label>
                     <input type="text" className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors" placeholder="山田 太郎" />
@@ -470,25 +509,46 @@ export default function PatternJ() {
                     <label className="text-[10px] uppercase tracking-widest opacity-40">メールアドレス</label>
                     <input type="email" className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors" placeholder="hello@example.com" />
                   </div>
-                </div>
-                <div className="space-y-2">
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.25 }}
+                  className="space-y-2"
+                >
                   <label className="text-[10px] uppercase tracking-widest opacity-40">お問い合わせ項目</label>
                   <select className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors appearance-none">
                     <option>プランのご相談</option>
                     <option>撮影のご予約</option>
                     <option>その他のお問い合わせ</option>
                   </select>
-                </div>
-                <div className="space-y-2">
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.35 }}
+                  className="space-y-2"
+                >
                   <label className="text-[10px] uppercase tracking-widest opacity-40">メッセージ内容</label>
                   <textarea rows={5} className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors resize-none" placeholder="撮影のご希望日や、ご質問などご自由にご記入ください。"></textarea>
-                </div>
-                <div className="pt-10">
-                  <button className="w-full md:w-auto px-12 py-5 rounded-full bg-[#4E342E] text-white hover:bg-[#5D4037] transition-all uppercase tracking-[0.3em] text-xs font-bold shadow-xl">送信する</button>
-                </div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.45 }}
+                  className="pt-10"
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="w-full md:w-auto px-12 py-5 rounded-full bg-[#4E342E] text-white hover:bg-[#5D4037] transition-all uppercase tracking-[0.3em] text-xs font-bold shadow-xl"
+                  >
+                    送信する
+                  </motion.button>
+                </motion.div>
               </form>
             </div>
-          </motion.section>
+          </section>
         );
       default:
         return (
@@ -534,7 +594,7 @@ export default function PatternJ() {
                   className="flex flex-col items-center"
                 >
                   <h1
-                    className="text-[9vw] sm:text-[7vw] md:text-[5.5vw] lg:text-[6vw] font-serif-playfair leading-[0.9] tracking-tighter mb-8 text-center flex flex-col items-center"
+                    className="text-[13vw] sm:text-[9vw] md:text-[5.5vw] lg:text-[6vw] font-serif-playfair leading-[0.9] tracking-tighter mb-8 text-center flex flex-col items-center"
                     style={{ 
                       color: logoColor,
                       textShadow: '0 10px 40px rgba(255,255,255,0.8), 0 0 16px rgba(255,255,255,0.6)'
@@ -566,34 +626,62 @@ export default function PatternJ() {
             </section>
 
             {/* Story Section: Earthy Tones */}
-            <section className="py-16 md:py-28 px-6 md:px-20 bg-[#F5F2ED]">
+            <section className="py-16 md:py-28 px-6 md:px-20 bg-[#F5F2ED] overflow-hidden">
               <div className="max-w-5xl mx-auto">
-                <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12">
-                  <div className="w-10 md:w-14 h-px bg-[#4E342E]/30" />
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.8 }}
+                  className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12"
+                >
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="origin-left w-10 md:w-14 h-px bg-[#4E342E]/30"
+                  />
                   <span className="text-[10px] uppercase tracking-widest opacity-40">The Narrative</span>
-                </div>
-                <h2 className="text-2xl md:text-4xl lg:text-5xl font-light italic leading-snug mb-10 md:mb-14">
+                </motion.div>
+                <motion.h2
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-2xl md:text-4xl lg:text-5xl font-light italic leading-snug mb-10 md:mb-14"
+                >
                   あなたのROOTSを、あなたの色で、<br className="hidden md:block" />ここから残していきませんか。
-                </h2>
+                </motion.h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-                  <p className="text-base md:text-lg font-light leading-loose opacity-70">
-                    お誕生日、七五三、成人式、卒業、結婚、そして家族のアニバーサリー。
-                    人生には沢山の「節目」＝ROOTSがあります。
-                    「ROOTS STUDIO」は、あなたのROOTSを形に残す場所。
-                  </p>
-                  <p className="text-base md:text-lg font-light leading-loose opacity-70">
-                    丁寧な対話からあなたのROOTSを汲み取り、「らしさ」を活かした撮影を貸切空間で。
-                    ここは、ただ写真を撮るだけの場所ではありません。
-                    手紙を書いたり、語り合ったり。
-                  </p>
+                  {[
+                    "お誕生日、七五三、成人式、卒業、結婚、そして家族のアニバーサリー。人生には沢山の「節目」＝ROOTSがあります。「ROOTS STUDIO」は、あなたのROOTSを形に残す場所。",
+                    "丁寧な対話からあなたのROOTSを汲み取り、「らしさ」を活かした撮影を貸切空間で。ここは、ただ写真を撮るだけの場所ではありません。手紙を書いたり、語り合ったり。"
+                  ].map((text, i) => (
+                    <motion.p
+                      key={i}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={{ duration: 0.8, delay: i * 0.18, ease: [0.16, 1, 0.3, 1] }}
+                      className="text-base md:text-lg font-light leading-loose opacity-70"
+                    >
+                      {text}
+                    </motion.p>
+                  ))}
                 </div>
               </div>
             </section>
 
             {/* Philosophy Section */}
-            <section className="py-16 md:py-28 px-6 md:px-20 border-y border-[#4E342E]/10">
+            <section className="py-16 md:py-28 px-6 md:px-20 border-y border-[#4E342E]/10 overflow-hidden">
               <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center">
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                >
                   <div className="text-[10px] uppercase tracking-[0.4em] opacity-40 mb-6 md:mb-8">01 / THE PHILOSOPHY</div>
                   <h2 className="text-2xl md:text-4xl lg:text-5xl font-light italic leading-snug mb-8">
                     想いと時間を、<br />カタチにする。
@@ -602,25 +690,38 @@ export default function PatternJ() {
                     ここは、ただ写真を撮るだけの場所ではありません。手紙を書いたり、語り合ったり。
                     「写真」というカタチだけではなく、そこで過ごした「時間」と「想い」も残します。
                   </p>
-                </div>
-                <div className="space-y-10 md:space-y-14">
+                </motion.div>
+                <div className="space-y-8 md:space-y-12">
                   {[
                     { title: "完全貸切の空間", desc: "完全貸切のプライベート空間で、リラックスした撮影を。" },
                     { title: "対話を大切に", desc: "撮影前の丁寧な対話を通じて、あなたの「ルーツ」を深く理解します。" },
                     { title: "一生のパートナー", desc: "一度きりではなく、人生の節目ごとに帰ってきたくなる場所へ。" },
-                  ].map((item) => (
-                    <div key={item.title} className="border-l-2 border-[#4E342E]/20 pl-6">
+                  ].map((item, i) => (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, x: 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                      className="border-l-2 border-[#4E342E]/20 pl-6"
+                    >
                       <h4 className="text-lg md:text-xl font-bold mb-2" style={{ color: "#4E342E" }}>{item.title}</h4>
                       <p className="text-sm md:text-base opacity-60 leading-relaxed">{item.desc}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </section>
 
             {/* Plan Preview Section */}
-            <section className="py-16 md:py-28 px-6 md:px-20 bg-[#F5F2ED]">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20">
+            <section className="py-16 md:py-28 px-6 md:px-20 bg-[#F5F2ED] overflow-hidden">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8 }}
+                className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20"
+              >
                 <div>
                   <h3 className="text-3xl md:text-5xl italic mb-3" style={{ color: logoColor }}>撮影プラン</h3>
                   <p className="text-[10px] tracking-widest opacity-40">誕生から還暦まで、人生のすべてに。</p>
@@ -631,7 +732,7 @@ export default function PatternJ() {
                 >
                   プランをすべて見る
                 </button>
-              </div>
+              </motion.div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12">
                 {[
                   { title: "Wedding", src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=900&auto=format&fit=crop", desc: "誓いの瞬間" },
@@ -640,6 +741,10 @@ export default function PatternJ() {
                 ].map((item, i) => (
                   <motion.div
                     key={i}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.9, delay: i * 0.18, ease: [0.16, 1, 0.3, 1] }}
                     whileHover={{ y: -20 }}
                     onClick={() => setCurrentPage('plan')}
                     className="group cursor-pointer flex md:block items-center gap-4 md:gap-0"
@@ -647,13 +752,13 @@ export default function PatternJ() {
                     <div className="w-2/3 md:w-full aspect-[3/2] md:aspect-[2/3] overflow-hidden rounded-2xl md:mb-6 border border-[#4E342E]/5 shadow-sm shrink-0">
                       <img
                         src={item.src}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                         alt={item.title}
                         referrerPolicy="no-referrer"
                       />
                     </div>
                     <div className="w-1/3 md:w-full md:text-center">
-                      <h4 className="text-lg md:text-xl italic mb-1" style={{ color: logoColor }}>{item.title}</h4>
+                      <h4 className="text-lg md:text-xl italic mb-1 group-hover:underline underline-offset-4 decoration-[#5D4037]/30 transition-all" style={{ color: logoColor }}>{item.title}</h4>
                       <p className="text-[9px] md:text-[10px] tracking-widest opacity-40">{item.desc}</p>
                     </div>
                   </motion.div>
@@ -702,9 +807,25 @@ export default function PatternJ() {
           </a>
         </nav>
 
+        {/* Scroll Progress Bar */}
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-[2px] z-[200] origin-left"
+          style={{ scaleX, backgroundColor: '#5D4037' }}
+        />
+
         {/* Dynamic Content */}
         <div className="relative">
-          {renderContent()}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {renderContent()}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Footer */}
