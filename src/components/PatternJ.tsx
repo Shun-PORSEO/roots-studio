@@ -870,22 +870,22 @@ export default function PatternJ() {
             {/* Right: Links list */}
             <div className="flex flex-col gap-4">
               <p className="text-[10px] uppercase tracking-[0.3em] opacity-40">Links</p>
-              <ul className="space-y-3">
+              <ul className="space-y-5">
                 <li>
-                  <a href="https://www.instagram.com/roots_studio_sapporo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity text-sm" style={{ color: logoColor }}>
-                    <Instagram className="w-4 h-4 flex-shrink-0" />
+                  <a href="https://www.instagram.com/roots_studio_sapporo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity text-xl font-light" style={{ color: logoColor }}>
+                    <Instagram className="w-6 h-6 flex-shrink-0" />
                     <span>Instagram</span>
                   </a>
                 </li>
                 <li>
-                  <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity text-sm" style={{ color: logoColor }}>
-                    <LineIcon className="w-4 h-4 flex-shrink-0" />
+                  <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity text-xl font-light" style={{ color: logoColor }}>
+                    <LineIcon className="w-6 h-6 flex-shrink-0" />
                     <span>LINE</span>
                   </a>
                 </li>
                 <li>
-                  <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity text-sm" style={{ color: logoColor }}>
-                    <MessageCircle className="w-4 h-4 flex-shrink-0" />
+                  <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity text-xl font-light" style={{ color: logoColor }}>
+                    <MessageCircle className="w-6 h-6 flex-shrink-0" />
                     <span>Contact</span>
                   </a>
                 </li>
