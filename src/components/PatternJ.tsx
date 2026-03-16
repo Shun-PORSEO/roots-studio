@@ -833,7 +833,7 @@ export default function PatternJ() {
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
 
             {/* Left: Logo + Address + Map */}
-            <div className="flex flex-col gap-5 md:col-span-1">
+            <div className="flex flex-col gap-5 md:col-span-1 items-center md:items-start text-center md:text-left">
               <div className="text-3xl font-serif-playfair" style={{ color: logoColor }}>Roots Studio</div>
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">Address</p>
@@ -858,7 +858,7 @@ export default function PatternJ() {
                 href="https://www.google.com/maps?q=札幌市中央区北7条西19丁目1−2+momijiビル2F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[9px] uppercase tracking-widest opacity-40 hover:opacity-80 transition-opacity w-fit"
+                className="inline-flex items-center gap-2 text-[9px] uppercase tracking-widest opacity-40 hover:opacity-80 transition-opacity"
                 style={{ color: logoColor }}
               >
                 <span>Google マップで開く</span>
@@ -867,7 +867,7 @@ export default function PatternJ() {
             </div>
 
             {/* Center: Links list */}
-            <div className="flex flex-col gap-5 md:col-span-1 md:items-center">
+            <div className="flex flex-col gap-5 md:col-span-1 items-center">
               <p className="text-[10px] uppercase tracking-[0.3em] opacity-40">Links</p>
               <ul className="space-y-6">
                 <li>
@@ -897,7 +897,7 @@ export default function PatternJ() {
           </div>
 
           {/* Bottom copyright */}
-          <div className="max-w-5xl mx-auto mt-10 pt-6 border-t border-[#4E342E]/10">
+          <div className="max-w-5xl mx-auto mt-10 pt-6 border-t border-[#4E342E]/10 text-center md:text-left">
             <p className="text-[10px] opacity-20 uppercase tracking-widest">© 2026 Roots Studio. All rights reserved.</p>
           </div>
         </footer>
