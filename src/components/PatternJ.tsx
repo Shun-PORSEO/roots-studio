@@ -829,10 +829,48 @@ export default function PatternJ() {
         </div>
 
         {/* Footer */}
-        <footer className="py-16 md:py-20 px-6 md:px-20 border-t border-[#4E342E]/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-12 text-center md:text-left">
-            <div className="text-2xl md:text-3xl font-serif-playfair" style={{ color: logoColor }}>Roots Studio</div>
-            <div className="flex gap-8 md:gap-12 items-center opacity-40">
+        <footer className="border-t border-[#4E342E]/10">
+          {/* Map + Address */}
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* Google Map */}
+            <div className="w-full h-64 md:h-80">
+              <iframe
+                title="Roots Studio Map"
+                src="https://www.google.com/maps?q=札幌市中央区北7条西19丁目1−2+momijiビル2F&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            {/* Address */}
+            <div className="bg-[#4E342E] text-[#F5F2ED] px-8 md:px-14 py-10 flex flex-col justify-center gap-6">
+              <div className="text-2xl md:text-3xl font-serif-playfair">Roots Studio</div>
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">Address</p>
+                <p className="text-sm md:text-base leading-relaxed opacity-80">
+                  〒060-0007<br />
+                  北海道札幌市中央区北７条西１９丁目１−２<br />
+                  momijiビル 2F
+                </p>
+              </div>
+              <a
+                href="https://www.google.com/maps?q=札幌市中央区北7条西19丁目1−2+momijiビル2F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity w-fit"
+              >
+                <span>Google マップで開く</span>
+                <div className="w-6 h-px bg-current" />
+              </a>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="py-8 px-6 md:px-20 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div className="flex gap-8 items-center opacity-40">
               <a href="https://www.instagram.com/roots_studio_sapporo/" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">
                 <Instagram className="w-5 h-5" />
               </a>
