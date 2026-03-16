@@ -830,10 +830,10 @@ export default function PatternJ() {
 
         {/* Footer */}
         <footer className="border-t border-[#4E342E]/10 py-14 px-6 md:px-32">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-center gap-16 md:gap-24">
 
             {/* Left: Logo + Address + Map */}
-            <div className="flex flex-col gap-5 md:col-span-1">
+            <div className="flex flex-col gap-5 flex-1">
               <div className="text-3xl font-serif-playfair" style={{ color: logoColor }}>Roots Studio</div>
               <div>
                 <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">Address</p>
@@ -866,8 +866,8 @@ export default function PatternJ() {
               </a>
             </div>
 
-            {/* Center: Links list */}
-            <div className="flex flex-col gap-5 md:col-span-1 md:items-center">
+            {/* Right: Links list */}
+            <div className="flex flex-col gap-5 justify-center items-center md:items-start">
               <p className="text-[10px] uppercase tracking-[0.3em] opacity-40">Links</p>
               <ul className="space-y-6">
                 <li>
@@ -890,9 +890,6 @@ export default function PatternJ() {
                 </li>
               </ul>
             </div>
-
-            {/* Right: empty spacer */}
-            <div className="hidden md:block md:col-span-1" />
 
           </div>
 
