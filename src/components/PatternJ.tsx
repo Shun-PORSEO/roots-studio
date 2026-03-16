@@ -842,7 +842,7 @@ export default function PatternJ() {
                   北７条西１９丁目１−２　momijiビル 2F
                 </p>
               </div>
-              <div className="w-full h-40 rounded-xl overflow-hidden border border-[#4E342E]/10">
+              <div className="w-64 h-36 rounded-xl overflow-hidden border border-[#4E342E]/10">
                 <iframe
                   title="Roots Studio Map"
                   src="https://www.google.com/maps?q=札幌市中央区北7条西19丁目1−2+momijiビル2F&output=embed"
