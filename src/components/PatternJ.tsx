@@ -830,69 +830,73 @@ export default function PatternJ() {
 
         {/* Footer */}
         <footer className="border-t border-[#4E342E]/10 py-14 px-6 md:px-32">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+          <div className="max-w-5xl mx-auto flex flex-col gap-8">
 
-            {/* Left: Logo + Address + Map */}
-            <div className="flex flex-col gap-5 md:col-span-1">
+            {/* Top: Logo + Address */}
+            <div className="flex flex-col gap-3">
               <div className="text-3xl font-serif-playfair" style={{ color: logoColor }}>Roots Studio</div>
               <div>
-                <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">Address</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 mb-1">Address</p>
                 <p className="text-sm leading-relaxed opacity-60">
                   〒060-0007　北海道札幌市中央区<br />
                   北７条西１９丁目１−２　momijiビル 2F
                 </p>
               </div>
-              <div className="w-64 h-36 rounded-xl overflow-hidden border border-[#4E342E]/10">
-                <iframe
-                  title="Roots Studio Map"
-                  src="https://www.google.com/maps?q=札幌市中央区北7条西19丁目1−2+momijiビル2F&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+            </div>
+
+            {/* Bottom: Map + Links side by side (always) */}
+            <div className="flex flex-row gap-8 items-start">
+              {/* Map */}
+              <div className="flex flex-col gap-2">
+                <div className="w-44 h-28 rounded-xl overflow-hidden border border-[#4E342E]/10">
+                  <iframe
+                    title="Roots Studio Map"
+                    src="https://www.google.com/maps?q=札幌市中央区北7条西19丁目1−2+momijiビル2F&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                <a
+                  href="https://www.google.com/maps?q=札幌市中央区北7条西19丁目1−2+momijiビル2F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[9px] uppercase tracking-widest opacity-40 hover:opacity-80 transition-opacity"
+                  style={{ color: logoColor }}
+                >
+                  <span>マップで開く</span>
+                  <div className="w-3 h-px bg-current" />
+                </a>
               </div>
-              <a
-                href="https://www.google.com/maps?q=札幌市中央区北7条西19丁目1−2+momijiビル2F"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[9px] uppercase tracking-widest opacity-40 hover:opacity-80 transition-opacity w-fit"
-                style={{ color: logoColor }}
-              >
-                <span>Google マップで開く</span>
-                <div className="w-4 h-px bg-current" />
-              </a>
-            </div>
 
-            {/* Center: Links list */}
-            <div className="flex flex-col gap-5 md:col-span-1 md:items-center">
-              <p className="text-[10px] uppercase tracking-[0.3em] opacity-40">Links</p>
-              <ul className="space-y-6">
-                <li>
-                  <a href="https://www.instagram.com/roots_studio_sapporo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity text-xl font-light" style={{ color: logoColor }}>
-                    <Instagram className="w-6 h-6 flex-shrink-0" />
-                    <span>Instagram</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity text-xl font-light" style={{ color: logoColor }}>
-                    <LineIcon className="w-6 h-6 flex-shrink-0" />
-                    <span>LINE</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity text-xl font-light" style={{ color: logoColor }}>
-                    <MessageCircle className="w-6 h-6 flex-shrink-0" />
-                    <span>Contact</span>
-                  </a>
-                </li>
-              </ul>
+              {/* Links */}
+              <div className="flex flex-col gap-3">
+                <p className="text-[10px] uppercase tracking-[0.3em] opacity-40">Links</p>
+                <ul className="space-y-4">
+                  <li>
+                    <a href="https://www.instagram.com/roots_studio_sapporo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity text-base font-light" style={{ color: logoColor }}>
+                      <Instagram className="w-5 h-5 flex-shrink-0" />
+                      <span>Instagram</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity text-base font-light" style={{ color: logoColor }}>
+                      <LineIcon className="w-5 h-5 flex-shrink-0" />
+                      <span>LINE</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity text-base font-light" style={{ color: logoColor }}>
+                      <MessageCircle className="w-5 h-5 flex-shrink-0" />
+                      <span>Contact</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-
-            {/* Right: empty spacer */}
-            <div className="hidden md:block md:col-span-1" />
 
           </div>
 
