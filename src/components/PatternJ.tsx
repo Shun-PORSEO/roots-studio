@@ -829,21 +829,20 @@ export default function PatternJ() {
         </div>
 
         {/* Footer */}
-        <footer className="border-t border-[#4E342E]/10 py-12 px-6 md:px-20">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12">
+        <footer className="border-t border-[#4E342E]/10 py-14 px-6 md:px-32">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-center gap-16 md:gap-24">
 
             {/* Left: Logo + Address + Map */}
-            <div className="flex flex-col gap-4">
-              <div className="text-2xl font-serif-playfair" style={{ color: logoColor }}>Roots Studio</div>
+            <div className="flex flex-col gap-5 flex-1">
+              <div className="text-3xl font-serif-playfair" style={{ color: logoColor }}>Roots Studio</div>
               <div>
-                <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 mb-1">Address</p>
-                <p className="text-xs leading-relaxed opacity-60">
+                <p className="text-[10px] uppercase tracking-[0.3em] opacity-40 mb-2">Address</p>
+                <p className="text-sm leading-relaxed opacity-60">
                   〒060-0007　北海道札幌市中央区<br />
                   北７条西１９丁目１−２　momijiビル 2F
                 </p>
               </div>
-              {/* Small map */}
-              <div className="w-64 h-36 rounded-xl overflow-hidden border border-[#4E342E]/10">
+              <div className="w-full h-40 rounded-xl overflow-hidden border border-[#4E342E]/10">
                 <iframe
                   title="Roots Studio Map"
                   src="https://www.google.com/maps?q=札幌市中央区北7条西19丁目1−2+momijiビル2F&output=embed"
@@ -868,9 +867,9 @@ export default function PatternJ() {
             </div>
 
             {/* Right: Links list */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-5 justify-center">
               <p className="text-[10px] uppercase tracking-[0.3em] opacity-40">Links</p>
-              <ul className="space-y-5">
+              <ul className="space-y-6">
                 <li>
                   <a href="https://www.instagram.com/roots_studio_sapporo/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity text-xl font-light" style={{ color: logoColor }}>
                     <Instagram className="w-6 h-6 flex-shrink-0" />
@@ -895,7 +894,7 @@ export default function PatternJ() {
           </div>
 
           {/* Bottom copyright */}
-          <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-[#4E342E]/10">
+          <div className="max-w-5xl mx-auto mt-10 pt-6 border-t border-[#4E342E]/10">
             <p className="text-[10px] opacity-20 uppercase tracking-widest">© 2026 Roots Studio. All rights reserved.</p>
           </div>
         </footer>
