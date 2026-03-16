@@ -776,17 +776,17 @@ export default function PatternJ() {
 
       <main>
         {/* Centered Floating Navigation */}
-        <nav className="fixed top-6 md:top-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-1 md:gap-2 p-1.5 md:p-2 bg-[#F9F7F5]/85 backdrop-blur-2xl border border-white/40 rounded-full shadow-[0_20px_40px_rgba(78,52,46,0.08),0_1px_3px_rgba(78,52,46,0.05)] text-[9px] md:text-[11px] uppercase tracking-[0.15em] md:tracking-[0.2em] font-medium transition-all w-max max-w-[95vw] overflow-x-auto no-scrollbar">
+        <nav className="fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-0.5 md:gap-2 p-1 md:p-2 bg-[#F9F7F5]/85 backdrop-blur-2xl border border-white/40 rounded-full shadow-[0_20px_40px_rgba(78,52,46,0.08),0_1px_3px_rgba(78,52,46,0.05)] text-[8px] md:text-[11px] uppercase tracking-[0.08em] md:tracking-[0.2em] font-medium transition-all" style={{ maxWidth: 'calc(100vw - 24px)' }}>
           {navLinks.map((link) => (
-            <button 
+            <button
               key={link.id}
               onClick={() => {
                 setCurrentPage(link.id);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className={`px-4 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-500 whitespace-nowrap ${
-                currentPage === link.id 
-                  ? 'bg-white font-bold shadow-sm' 
+              className={`px-2.5 md:px-6 py-2 md:py-3 rounded-full transition-all duration-500 whitespace-nowrap ${
+                currentPage === link.id
+                  ? 'bg-white font-bold shadow-sm'
                   : 'hover:bg-white/50 opacity-60 hover:opacity-100'
               }`}
               style={{ color: logoColor }}
@@ -794,16 +794,16 @@ export default function PatternJ() {
               {link.label}
             </button>
           ))}
-          <div className="w-px h-6 bg-[#4E342E]/10 mx-2 md:mx-3 shrink-0" />
+          <div className="w-px h-5 bg-[#4E342E]/10 mx-1 md:mx-3 shrink-0" />
           <a
             href="https://lin.ee/oOwyg7y"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-2 px-5 md:px-8 py-2.5 md:py-3 rounded-full text-white transition-all duration-500 whitespace-nowrap shadow-md hover:shadow-xl hover:-translate-y-0.5 shrink-0"
+            className="group flex items-center gap-1.5 px-3 md:px-8 py-2 md:py-3 rounded-full text-white transition-all duration-500 whitespace-nowrap shadow-md hover:shadow-xl hover:-translate-y-0.5 shrink-0"
             style={{ backgroundColor: logoColor }}
           >
-            <LineIcon className="w-3.5 h-3.5 md:w-4 md:h-4 opacity-90 group-hover:opacity-100 transition-opacity" />
-            <span className="text-[10px] md:text-xs tracking-[0.2em] font-bold">LINE相談</span>
+            <LineIcon className="w-3 h-3 md:w-4 md:h-4 opacity-90 group-hover:opacity-100 transition-opacity" />
+            <span className="text-[8px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] font-bold">LINE</span>
           </a>
         </nav>
 
