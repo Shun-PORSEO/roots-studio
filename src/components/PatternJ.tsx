@@ -803,7 +803,7 @@ export default function PatternJ() {
             style={{ backgroundColor: logoColor }}
           >
             <LineIcon className="w-3.5 h-3.5 md:w-4 md:h-4 opacity-90 group-hover:opacity-100 transition-opacity" />
-            <span className="text-[11px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] font-bold">LINEで相談</span>
+            <span className="text-[11px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] font-bold font-serif-jp">LINEで相談</span>
           </a>
         </nav>
 
