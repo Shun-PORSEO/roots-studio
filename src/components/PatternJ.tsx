@@ -867,7 +867,7 @@ export default function PatternJ() {
             </div>
 
             {/* Right: Links list */}
-            <div className="flex flex-col gap-5 justify-center">
+            <div className="flex flex-col gap-5 justify-center items-center md:items-start">
               <p className="text-[10px] uppercase tracking-[0.3em] opacity-40">Links</p>
               <ul className="space-y-6">
                 <li>
