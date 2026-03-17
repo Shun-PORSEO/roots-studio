@@ -101,7 +101,7 @@ export default function PatternJ() {
             className="min-h-screen bg-[#F5F2ED] text-[#4E342E]"
           >
             {/* Page Header */}
-            <div className="pt-36 pb-14 px-6 md:px-20 border-b border-[#4E342E]/10">
+            <div className="pt-36 pb-14 px-6 md:px-20">
               <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-8">
                 <div>
                   <div className="flex items-center gap-3 mb-5">
@@ -135,7 +135,7 @@ export default function PatternJ() {
             </div>
 
             {/* Category Overview — "こんな撮影ができます" */}
-            <div className="px-6 md:px-20 pb-16 md:pb-24">
+            <div className="px-6 md:px-20 pt-16 md:pt-24 pb-16 md:pb-24">
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
                   <p className="text-xs uppercase tracking-[0.4em] opacity-40 mb-3">撮影カテゴリー</p>
@@ -210,8 +210,8 @@ export default function PatternJ() {
                       </div>
                       <div className="md:w-[45%] p-10 md:p-14 flex flex-col justify-center">
                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 px-3 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-6">{item.tag}</span>
-                        <h3 className="text-2xl md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
-                        <p className="text-base opacity-65 leading-relaxed mb-8">{item.desc}</p>
+                        <h3 className="text-xl md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
+                        <p className="text-sm md:text-base opacity-65 leading-relaxed mb-8">{item.desc}</p>
                         <button onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')} className="text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3 group-hover:gap-5 transition-all" style={{ color: "#4E342E" }}>
                           <span>お問い合わせ</span><div className="w-10 h-px bg-current opacity-30" />
                         </button>
@@ -273,7 +273,7 @@ export default function PatternJ() {
                       </div>
                       <div className="md:w-[45%] p-10 md:p-14 flex flex-col justify-center">
                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 px-3 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-6">{item.tag}</span>
-                        <h3 className="text-2xl md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
+                        <h3 className="text-xl md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
                         <p className="text-base opacity-65 leading-relaxed mb-8">{item.desc}</p>
                         <button onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')} className="text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3 group-hover:gap-5 transition-all" style={{ color: "#4E342E" }}>
                           <span>お問い合わせ</span><div className="w-10 h-px bg-current opacity-30" />
@@ -338,7 +338,7 @@ export default function PatternJ() {
                       </div>
                       <div className="md:w-[45%] p-10 md:p-14 flex flex-col justify-center">
                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 px-3 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-6">{item.tag}</span>
-                        <h3 className="text-2xl md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
+                        <h3 className="text-xl md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
                         <p className="text-base opacity-65 leading-relaxed mb-8">{item.desc}</p>
                         <button onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')} className="text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3 group-hover:gap-5 transition-all" style={{ color: "#4E342E" }}>
                           <span>お問い合わせ</span><div className="w-10 h-px bg-current opacity-30" />
@@ -361,8 +361,8 @@ export default function PatternJ() {
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
                         <span className="text-[8px] uppercase tracking-[0.3em] opacity-30 px-2.5 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-4">{item.tag}</span>
-                        <h4 className="text-xl font-bold mb-3 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h4>
-                        <p className="text-base opacity-65 leading-relaxed mb-6">{item.desc}</p>
+                        <h4 className="text-lg md:text-xl font-bold mb-3 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h4>
+                        <p className="text-sm md:text-base opacity-65 leading-relaxed mb-6">{item.desc}</p>
                         <button onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')} className="mt-auto text-[9px] uppercase tracking-widest font-bold flex items-center gap-2 group-hover:gap-4 transition-all opacity-60 hover:opacity-100" style={{ color: "#4E342E" }}>
                           <span>詳細・予約</span><div className="w-6 h-px bg-current" />
                         </button>
@@ -384,7 +384,7 @@ export default function PatternJ() {
                       <p className="text-sm opacity-60 leading-relaxed mb-8">すべての撮影プランに<br className="md:hidden" />この基本料金が含まれます。<br />ご希望に応じてオプションを<br className="md:hidden" />追加いただけます。</p>
                       <button
                         onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')}
-                        className="px-8 py-4 rounded-full bg-[#F5F2ED] text-[#4E342E] hover:bg-white transition-all text-sm font-bold tracking-widest hover:scale-105 active:scale-95"
+                        className="px-8 py-4 rounded-full bg-[#F5F2ED] text-[#4E342E] hover:bg-white transition-all text-xs md:text-sm font-bold tracking-widest hover:scale-105 active:scale-95 whitespace-nowrap"
                       >
                         お問い合わせ・ご予約
                       </button>
@@ -458,7 +458,7 @@ export default function PatternJ() {
               <div className="max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden bg-[#4E342E] text-[#F5F2ED] py-16 md:py-24 px-8 md:px-16">
                 <div className="mb-12">
                   <p className="text-[10px] uppercase tracking-[0.4em] opacity-40 mb-4">オプション</p>
-                  <h3 className="text-2xl md:text-3xl italic mb-10 opacity-90">セッションをカスタマイズ</h3>
+                  <h3 className="text-xl md:text-3xl italic mb-10 opacity-90">セッションを<br className="md:hidden" />カスタマイズ</h3>
                   <div className="space-y-0 divide-y divide-white/10">
                     <div className="flex justify-between items-center py-5">
                       <span className="text-base opacity-80">ヘアセット＆メイク</span>
@@ -473,7 +473,7 @@ export default function PatternJ() {
                 <div className="text-center pt-10 border-t border-white/10">
                   <button
                     onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')}
-                    className="px-14 py-5 rounded-full bg-[#F5F2ED] text-[#4E342E] hover:bg-white transition-all uppercase tracking-[0.3em] text-sm font-bold shadow-2xl hover:scale-105 active:scale-95"
+                    className="px-10 md:px-14 py-5 rounded-full bg-[#F5F2ED] text-[#4E342E] hover:bg-white transition-all uppercase tracking-[0.15em] md:tracking-[0.3em] text-xs md:text-sm font-bold shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap"
                   >
                     お問い合わせ・ご予約
                   </button>
