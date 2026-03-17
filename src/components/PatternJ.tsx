@@ -208,9 +208,9 @@ export default function PatternJ() {
                       <div className="md:w-[55%] aspect-[4/3] md:aspect-auto overflow-hidden">
                         <img src={`https://picsum.photos/seed/wedding-${item.img}/1200/900`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
                       </div>
-                      <div className="md:w-[45%] p-10 md:p-14 flex flex-col justify-center">
+                      <div className="md:w-[45%] p-7 md:p-14 flex flex-col justify-center">
                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 px-3 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-6">{item.tag}</span>
-                        <h3 className="text-xl md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
+                        <h3 className="text-lg md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
                         <p className="text-sm md:text-base opacity-65 leading-relaxed mb-8">{item.desc}</p>
                         <button onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')} className="text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3 group-hover:gap-5 transition-all" style={{ color: "#4E342E" }}>
                           <span>お問い合わせ</span><div className="w-10 h-px bg-current opacity-30" />
@@ -271,10 +271,10 @@ export default function PatternJ() {
                       <div className="md:w-[55%] aspect-[4/3] md:aspect-auto overflow-hidden">
                         <img src={`https://picsum.photos/seed/family-${item.img}/1200/900`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
                       </div>
-                      <div className="md:w-[45%] p-10 md:p-14 flex flex-col justify-center">
+                      <div className="md:w-[45%] p-7 md:p-14 flex flex-col justify-center">
                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 px-3 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-6">{item.tag}</span>
-                        <h3 className="text-xl md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
-                        <p className="text-base opacity-65 leading-relaxed mb-8">{item.desc}</p>
+                        <h3 className="text-lg md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
+                        <p className="text-sm md:text-base opacity-65 leading-relaxed mb-8">{item.desc}</p>
                         <button onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')} className="text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3 group-hover:gap-5 transition-all" style={{ color: "#4E342E" }}>
                           <span>お問い合わせ</span><div className="w-10 h-px bg-current opacity-30" />
                         </button>
@@ -336,10 +336,10 @@ export default function PatternJ() {
                       <div className="md:w-[55%] aspect-[4/3] md:aspect-auto overflow-hidden">
                         <img src={`https://picsum.photos/seed/myroots-${item.img}/1200/900`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
                       </div>
-                      <div className="md:w-[45%] p-10 md:p-14 flex flex-col justify-center">
+                      <div className="md:w-[45%] p-7 md:p-14 flex flex-col justify-center">
                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 px-3 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-6">{item.tag}</span>
-                        <h3 className="text-xl md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
-                        <p className="text-base opacity-65 leading-relaxed mb-8">{item.desc}</p>
+                        <h3 className="text-lg md:text-3xl font-bold mb-5 leading-tight" style={{ color: "#5D4037" }}>{item.title}</h3>
+                        <p className="text-sm md:text-base opacity-65 leading-relaxed mb-8">{item.desc}</p>
                         <button onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')} className="text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3 group-hover:gap-5 transition-all" style={{ color: "#4E342E" }}>
                           <span>お問い合わせ</span><div className="w-10 h-px bg-current opacity-30" />
                         </button>
