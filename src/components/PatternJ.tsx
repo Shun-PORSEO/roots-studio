@@ -23,7 +23,7 @@ const heroImages = [
 
 export default function PatternJ() {
   const logoColor = "#5D4037";
-  const [currentPage, setCurrentPage] = React.useState<'home' | 'gallery' | 'plan' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = React.useState<'home' | 'gallery' | 'plan'>('home');
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
@@ -47,7 +47,6 @@ export default function PatternJ() {
     { id: 'home', label: 'Concept' },
     { id: 'plan', label: 'Plan' },
     { id: 'gallery', label: 'Gallery' },
-    { id: 'contact', label: 'Contact' },
   ] as const;
 
   const renderContent = () => {
@@ -111,7 +110,7 @@ export default function PatternJ() {
                   </div>
                   <h1 className="text-5xl md:text-7xl font-light italic leading-none mb-5" style={{ color: "#5D4037" }}>Plan.</h1>
                   <p className="text-sm md:text-base font-light opacity-60 leading-loose max-w-md">
-                    人生の節目に合わせて選べる、<br />Roots Studioだけのオリジナルプランをご用意しています。
+                    人生の節目に合わせて選べる、<br className="hidden md:block" />Roots Studioだけの<br className="md:hidden" />オリジナルプランをご用意しています。
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -131,82 +130,6 @@ export default function PatternJ() {
                       {item.label}
                     </button>
                   ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Base Pricing — Dark Band */}
-            <div id="base-pricing" className="scroll-mt-24 bg-[#4E342E] text-[#F5F2ED] py-14 md:py-20 px-6 md:px-20">
-              <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.4em] opacity-40 mb-4">基本料金（全プラン共通）</p>
-                  <div className="text-5xl md:text-6xl font-light mb-4 tracking-tight">39,800<span className="text-2xl ml-1 opacity-70">円</span></div>
-                  <p className="text-sm opacity-60 leading-relaxed mb-8">すべての撮影プランにこの基本料金が含まれます。<br />ご希望に応じてオプションを追加いただけます。</p>
-                  <button
-                    onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')}
-                    className="px-8 py-4 rounded-full bg-[#F5F2ED] text-[#4E342E] hover:bg-white transition-all text-sm font-bold tracking-widest hover:scale-105 active:scale-95"
-                  >
-                    お問い合わせ・ご予約
-                  </button>
-                </div>
-                <div className="space-y-4">
-                  {[
-                    "撮影カット数 50カット",
-                    "全データダウンロード可能",
-                    "スタジオ完全貸切",
-                    "専属フォトプランナー",
-                  ].map((f) => (
-                    <div key={f} className="flex items-center gap-4 border-b border-white/10 pb-4">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#F5F2ED]/50 shrink-0" />
-                      <p className="text-base opacity-80">{f}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Seasonal Limited — SAKURA */}
-            <div id="seasonal-plan" className="scroll-mt-24 px-6 md:px-20 py-16 md:py-24">
-              <div className="max-w-6xl mx-auto">
-                <div className="relative rounded-[2.5rem] overflow-hidden bg-[#FFF5F7] border border-[#FFC1CC]/30">
-                  <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFC1CC]/15 rounded-full -mr-48 -mt-48 blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FFC1CC]/10 rounded-full -ml-32 -mb-32 blur-3xl pointer-events-none" />
-                  <div className="relative z-10 p-10 md:p-16">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-12">
-                      <div>
-                        <span className="inline-block px-3 py-1 rounded-full bg-[#FFC1CC]/30 text-[#D4818F] text-[9px] uppercase tracking-[0.3em] font-bold mb-4">期間限定</span>
-                        <h3 className="text-3xl md:text-4xl italic mb-2" style={{ color: "#5D4037" }}>SAKURA Bloom Session 2026</h3>
-                        <p className="text-sm opacity-60">記憶に残る、一番早いお花見を</p>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                      {[
-                        { title: "ライトプラン", subtitle: "まずはお試しに", price: "16,500", features: ["厳選データ3枚"] },
-                        { title: "スタンダードプラン", subtitle: "一番人気", price: "19,800", features: ["厳選データ15枚"], featured: true },
-                        { title: "プレミアムプラン", subtitle: "ギフトにも最適", price: "39,800", features: ["データ30枚", "フォトフレーム付"] },
-                      ].map((plan, i) => (
-                        <div key={i} className={`rounded-2xl p-8 flex flex-col ${plan.featured ? 'bg-[#D4818F] text-white' : 'bg-white/60 backdrop-blur-sm'}`}>
-                          <p className={`text-[9px] uppercase tracking-[0.3em] mb-2 ${plan.featured ? 'opacity-70' : 'opacity-40'}`}>{plan.subtitle}</p>
-                          <h4 className="text-lg font-bold mb-4 leading-tight">{plan.title}</h4>
-                          <div className="text-3xl font-light mb-6">{plan.price}<span className="text-base ml-1 opacity-70">円</span></div>
-                          <ul className="space-y-2 mb-8 flex-grow">
-                            {plan.features.map((f, j) => (
-                              <li key={j} className={`text-sm flex items-center gap-2 ${plan.featured ? 'opacity-90' : 'opacity-60'}`}>
-                                <div className={`w-1 h-1 rounded-full ${plan.featured ? 'bg-white' : 'bg-[#D4818F]'}`} />
-                                {f}
-                              </li>
-                            ))}
-                          </ul>
-                          <button
-                            onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')}
-                            className={`w-full py-3 rounded-full text-[10px] uppercase tracking-widest font-bold transition-all ${plan.featured ? 'bg-white text-[#D4818F] hover:bg-white/90' : 'border border-[#FFC1CC] text-[#D4818F] hover:bg-[#FFC1CC] hover:text-white'}`}
-                          >
-                            お問い合わせ
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -450,9 +373,89 @@ export default function PatternJ() {
               </div>
             </div>
 
+            {/* Base Pricing — Dark Band */}
+            <div id="base-pricing" className="scroll-mt-24 px-6 md:px-20 py-16 md:py-24">
+              <div className="max-w-6xl mx-auto">
+                <div className="rounded-[2.5rem] overflow-hidden bg-[#4E342E] text-[#F5F2ED] py-14 md:py-20 px-8 md:px-16">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.4em] opacity-40 mb-4">基本料金（全プラン共通）</p>
+                      <div className="text-5xl md:text-6xl font-light mb-4 tracking-tight">39,800<span className="text-2xl ml-1 opacity-70">円</span></div>
+                      <p className="text-sm opacity-60 leading-relaxed mb-8">すべての撮影プランに<br className="md:hidden" />この基本料金が含まれます。<br />ご希望に応じてオプションを<br className="md:hidden" />追加いただけます。</p>
+                      <button
+                        onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')}
+                        className="px-8 py-4 rounded-full bg-[#F5F2ED] text-[#4E342E] hover:bg-white transition-all text-sm font-bold tracking-widest hover:scale-105 active:scale-95"
+                      >
+                        お問い合わせ・ご予約
+                      </button>
+                    </div>
+                    <div className="space-y-4">
+                      {[
+                        "撮影カット数 50カット",
+                        "全データダウンロード可能",
+                        "スタジオ完全貸切",
+                        "専属フォトプランナー",
+                      ].map((f) => (
+                        <div key={f} className="flex items-center gap-4 border-b border-white/10 pb-4">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#F5F2ED]/50 shrink-0" />
+                          <p className="text-base opacity-80">{f}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Seasonal Limited — SAKURA */}
+            <div id="seasonal-plan" className="scroll-mt-24 px-6 md:px-20 py-16 md:py-24">
+              <div className="max-w-6xl mx-auto">
+                <div className="relative rounded-[2.5rem] overflow-hidden bg-[#FFF5F7] border border-[#FFC1CC]/30">
+                  <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFC1CC]/15 rounded-full -mr-48 -mt-48 blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FFC1CC]/10 rounded-full -ml-32 -mb-32 blur-3xl pointer-events-none" />
+                  <div className="relative z-10 p-10 md:p-16">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-12">
+                      <div>
+                        <span className="inline-block px-3 py-1 rounded-full bg-[#FFC1CC]/30 text-[#D4818F] text-[9px] uppercase tracking-[0.3em] font-bold mb-4">期間限定</span>
+                        <h3 className="text-2xl md:text-4xl italic mb-2" style={{ color: "#5D4037" }}>SAKURA Bloom Session 2026</h3>
+                        <p className="text-sm opacity-60">記憶に残る、一番早いお花見を</p>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                      {[
+                        { title: "ライトプラン", subtitle: "まずはお試しに", price: "16,500", features: ["厳選データ3枚"] },
+                        { title: "スタンダードプラン", subtitle: "一番人気", price: "19,800", features: ["厳選データ15枚"], featured: true },
+                        { title: "プレミアムプラン", subtitle: "ギフトにも最適", price: "39,800", features: ["データ30枚", "フォトフレーム付"] },
+                      ].map((plan, i) => (
+                        <div key={i} className={`rounded-2xl p-8 flex flex-col ${plan.featured ? 'bg-[#D4818F] text-white' : 'bg-white/60 backdrop-blur-sm'}`}>
+                          <p className={`text-[9px] uppercase tracking-[0.3em] mb-2 ${plan.featured ? 'opacity-70' : 'opacity-40'}`}>{plan.subtitle}</p>
+                          <h4 className="text-lg font-bold mb-4 leading-tight">{plan.title}</h4>
+                          <div className="text-3xl font-light mb-6">{plan.price}<span className="text-base ml-1 opacity-70">円</span></div>
+                          <ul className="space-y-2 mb-8 flex-grow">
+                            {plan.features.map((f, j) => (
+                              <li key={j} className={`text-sm flex items-center gap-2 ${plan.featured ? 'opacity-90' : 'opacity-60'}`}>
+                                <div className={`w-1 h-1 rounded-full ${plan.featured ? 'bg-white' : 'bg-[#D4818F]'}`} />
+                                {f}
+                              </li>
+                            ))}
+                          </ul>
+                          <button
+                            onClick={() => window.open('https://lin.ee/oOwyg7y', '_blank', 'noopener,noreferrer')}
+                            className={`w-full py-3 rounded-full text-[10px] uppercase tracking-widest font-bold transition-all ${plan.featured ? 'bg-white text-[#D4818F] hover:bg-white/90' : 'border border-[#FFC1CC] text-[#D4818F] hover:bg-[#FFC1CC] hover:text-white'}`}
+                          >
+                            お問い合わせ
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Options + CTA */}
-            <div className="bg-[#4E342E] text-[#F5F2ED] py-16 md:py-24 px-6 md:px-20">
-              <div className="max-w-4xl mx-auto">
+            <div className="px-6 md:px-20 py-16 md:py-24">
+              <div className="max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden bg-[#4E342E] text-[#F5F2ED] py-16 md:py-24 px-8 md:px-16">
                 <div className="mb-12">
                   <p className="text-[10px] uppercase tracking-[0.4em] opacity-40 mb-4">オプション</p>
                   <h3 className="text-2xl md:text-3xl italic mb-10 opacity-90">セッションをカスタマイズ</h3>
@@ -480,75 +483,6 @@ export default function PatternJ() {
             </div>
 
           </motion.div>
-        );
-      case 'contact':
-        return (
-          <section className="py-20 md:py-40 px-6 md:px-20 min-h-screen">
-            <div className="max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="mb-16 md:mb-20 text-center"
-              >
-                <h2 className="text-4xl md:text-7xl font-light italic mb-4">Contact Us.</h2>
-                <p className="text-sm md:text-lg opacity-60 tracking-widest uppercase">お問い合わせ・ご予約</p>
-              </motion.div>
-              <form className="space-y-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.15 }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8"
-                >
-                  <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest opacity-40">お名前</label>
-                    <input type="text" className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors" placeholder="山田 太郎" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] uppercase tracking-widest opacity-40">メールアドレス</label>
-                    <input type="email" className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors" placeholder="hello@example.com" />
-                  </div>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.25 }}
-                  className="space-y-2"
-                >
-                  <label className="text-[10px] uppercase tracking-widest opacity-40">お問い合わせ項目</label>
-                  <select className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors appearance-none">
-                    <option>プランのご相談</option>
-                    <option>撮影のご予約</option>
-                    <option>その他のお問い合わせ</option>
-                  </select>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.35 }}
-                  className="space-y-2"
-                >
-                  <label className="text-[10px] uppercase tracking-widest opacity-40">メッセージ内容</label>
-                  <textarea rows={5} className="w-full bg-transparent border-b border-[#4E342E]/20 py-3 focus:border-[#4E342E] outline-none transition-colors resize-none" placeholder="撮影のご希望日や、ご質問などご自由にご記入ください。"></textarea>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.45 }}
-                  className="pt-10"
-                >
-                  <motion.button
-                    whileHover={{ scale: 1.04 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="w-full md:w-auto px-12 py-5 rounded-full bg-[#4E342E] text-white hover:bg-[#5D4037] transition-all uppercase tracking-[0.3em] text-xs font-bold shadow-xl"
-                  >
-                    送信する
-                  </motion.button>
-                </motion.div>
-              </form>
-            </div>
-          </section>
         );
       default:
         return (
@@ -611,7 +545,7 @@ export default function PatternJ() {
                   transition={{ duration: 1.5, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <p 
-                    className="text-xs md:text-xl font-medium tracking-[0.4em] md:tracking-[0.6em] uppercase flex items-center gap-4"
+                    className="text-xs md:text-xl font-medium tracking-[0.2em] md:tracking-[0.6em] uppercase flex items-center gap-2 md:gap-4"
                     style={{ 
                       color: logoColor,
                       textShadow: '0 4px 20px rgba(255,255,255,0.9)'
@@ -651,7 +585,7 @@ export default function PatternJ() {
                   transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
                   className="text-2xl md:text-4xl lg:text-5xl font-light italic leading-snug mb-10 md:mb-14"
                 >
-                  あなたのROOTSを、あなたの色で、<br className="hidden md:block" />ここから残していきませんか。
+                  あなたのROOTSを、<br className="md:hidden" />あなたの色で、<br className="hidden md:block" />ここから残していきませんか。
                 </motion.h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
                   {[
@@ -684,7 +618,7 @@ export default function PatternJ() {
                 >
                   <div className="text-[10px] uppercase tracking-[0.4em] opacity-40 mb-6 md:mb-8">01 / THE PHILOSOPHY</div>
                   <h2 className="text-2xl md:text-4xl lg:text-5xl font-light italic leading-snug mb-8">
-                    想いと時間を、<br />カタチにする。
+                    想いと時間を、<br className="hidden md:block" />カタチにする。
                   </h2>
                   <p className="text-base md:text-lg font-light leading-loose opacity-70">
                     ここは、ただ写真を撮るだけの場所ではありません。手紙を書いたり、語り合ったり。
@@ -880,12 +814,6 @@ export default function PatternJ() {
                   <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity text-xl font-light" style={{ color: logoColor }}>
                     <LineIcon className="w-6 h-6 flex-shrink-0" />
                     <span>LINE</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://lin.ee/oOwyg7y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity text-xl font-light" style={{ color: logoColor }}>
-                    <MessageCircle className="w-6 h-6 flex-shrink-0" />
-                    <span>Contact</span>
                   </a>
                 </li>
               </ul>
