@@ -477,7 +477,6 @@ export default function PatternJ() {
                   >
                     お問い合わせ・ご予約
                   </button>
-                  <p className="mt-5 text-[10px] uppercase tracking-widest opacity-30">今すぐ相談する</p>
                 </div>
               </div>
             </div>
