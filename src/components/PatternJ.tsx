@@ -9,16 +9,14 @@ const LineIcon = ({ className }: { className?: string }) => (
 );
 
 const heroImages = [
-  // Wedding couple — romantic portrait
-  "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2560&auto=format&fit=crop",
-  // Business partners — two founders at desk
-  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2560&auto=format&fit=crop",
-  // Wedding couple — outdoor ceremony
-  "https://images.unsplash.com/photo-1511285560929-80b456503681?q=80&w=2560&auto=format&fit=crop",
-  // Business partners — co-founders discussing
-  "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2560&auto=format&fit=crop",
-  // Couple — intimate moment
-  "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2560&auto=format&fit=crop",
+  "/images/top/1枚目.jpg",
+  "/images/top/２枚目.jpg",
+  "/images/top/3枚目.jpg",
+  "/images/top/4枚目.jpg",
+  "/images/top/5枚目.png",
+  "/images/top/6枚目.jpg",
+  "/images/top/7枚目.jpg",
+  "/images/top/8枚目.png",
 ];
 
 export default function PatternJ() {
@@ -65,20 +63,20 @@ export default function PatternJ() {
                 <p className="text-sm md:text-lg opacity-60 tracking-widest uppercase">Captured Moments of Life</p>
               </motion.div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+                {['1.png', '2.png', '3.jpg', '4.jpg', '5.JPG'].map((filename, index) => (
                   <motion.div
-                    key={i}
+                    key={index}
                     initial={{ opacity: 0, scale: 0.94 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.7, delay: ((i - 1) % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.7, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
                     whileHover={{ scale: 1.03, zIndex: 10 }}
-                    className={`relative overflow-hidden rounded-2xl bg-stone-200 ${i === 4 ? 'col-span-2 md:col-span-1' : ''}`}
+                    className={`relative overflow-hidden rounded-2xl bg-stone-200 ${index === 3 ? 'col-span-2 md:col-span-1' : ''}`}
                   >
                     <img
-                      src={`https://picsum.photos/seed/gallery-${i}/800/1200`}
+                      src={`/images/gallery/${filename}`}
                       className="w-full h-full object-cover aspect-[3/4]"
-                      alt={`Gallery ${i}`}
+                      alt={`Gallery ${index + 1}`}
                       referrerPolicy="no-referrer"
                     />
                     <motion.div
@@ -143,9 +141,9 @@ export default function PatternJ() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   {[
-                    { title: "Wedding", sub: "ウェディング", desc: "誓いの瞬間を、二人だけの形に。フォトウェディングから入籍フォトまで、4つの特別なプランをご用意。", target: "wedding-collection", img: "w1" },
-                    { title: "Family", sub: "ファミリー", desc: "家族の絆を、世代を超えて残す。ペット撮影から定点観測、グリーフケアまで7つのプラン。", target: "family-collection", img: "f2" },
-                    { title: "My Roots", sub: "マイルーツ", desc: "自分らしさを探究する、個のための撮影。起業・ポートレート・展覧会など5つのプラン。", target: "my-roots-collection", img: "m3" },
+                    { title: "Wedding", sub: "ウェディング", desc: "誓いの瞬間を、二人だけの形に。フォトウェディングから入籍フォトまで、4つの特別なプランをご用意。", target: "wedding-collection", img: "/images/plans/写真だけの小さな結婚式.jpg" },
+                    { title: "Family", sub: "ファミリー", desc: "家族の絆を、世代を超えて残す。ペット撮影から定点観測、グリーフケアまで7つのプラン。", target: "family-collection", img: "/images/plans/Family.jpg" },
+                    { title: "My Roots", sub: "マイルーツ", desc: "自分らしさを探究する、個のための撮影。起業・ポートレート・展覧会など5つのプラン。", target: "my-roots-collection", img: "/images/plans/MyRoots.jpg" },
                   ].map((cat) => (
                     <motion.div
                       key={cat.target}
@@ -162,7 +160,7 @@ export default function PatternJ() {
                     >
                       <div className="aspect-[4/3] overflow-hidden">
                         <img
-                          src={`https://picsum.photos/seed/${cat.img}-cat/800/600`}
+                          src={cat.img.includes('/') ? cat.img : `https://picsum.photos/seed/${cat.img}-cat/800/600`}
                           className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
                           alt={cat.title}
                           referrerPolicy="no-referrer"
@@ -199,14 +197,14 @@ export default function PatternJ() {
 
                 {/* Featured first card */}
                 {(() => {
-                  const item = { title: "手紙と残すフォトウェディング", desc: "撮影の最後に、お互いへ、または家族へ「手紙」を書く時間を設けるプラン。写真は「誓いのシーン」と「手紙を書いているシーン」、そして「手書きの手紙そのもの」をデータ化して納品します。手紙は特製のボックスに入れ、1年後（または数年後）の記念日までスタジオで保管、または封印して持ち帰っていただきます。", img: "w1", tag: "Story" };
+                  const item = { title: "手紙と残すフォトウェディング", desc: "撮影の最後に、お互いへ、または家族へ「手紙」を書く時間を設けるプラン。写真は「誓いのシーン」と「手紙を書いているシーン」、そして「手書きの手紙そのもの」をデータ化して納品します。手紙は特製のボックスに入れ、1年後（または数年後）の記念日までスタジオで保管、または封印して持ち帰っていただきます。", img: "/images/plans/手紙と残すフォトウェディング.png", tag: "Story" };
                   return (
                     <motion.div
                       whileHover={{ y: -4 }}
                       className="group flex flex-col md:flex-row rounded-[2rem] overflow-hidden bg-white border border-[#4E342E]/5 shadow-sm hover:shadow-2xl transition-all duration-700 mb-6 cursor-pointer"
                     >
                       <div className="md:w-[55%] aspect-[4/3] md:aspect-auto overflow-hidden">
-                        <img src={`https://picsum.photos/seed/wedding-${item.img}/1200/900`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
+                        <img src={item.img.includes('/') ? item.img : `https://picsum.photos/seed/wedding-${item.img}/1200/900`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
                       </div>
                       <div className="md:w-[45%] p-7 md:p-14 flex flex-col justify-center">
                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 px-3 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-6">{item.tag}</span>
@@ -223,13 +221,13 @@ export default function PatternJ() {
                 {/* Remaining 3 cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   {[
-                    { title: "2度目のプロポーズ", desc: "「実はちゃんとプロポーズしていない」「結婚式で誓いの言葉を言えなかった」というカップルのために、スタジオを完全貸切にして、二人きりで手紙を読み合う時間を作ります。カメラマンは遠くから望遠レンズで、お二人の邪魔をしないようにその空気を盗み撮りします。", img: "w2", tag: "Emotion" },
-                    { title: "写真だけの小さな結婚式", desc: "「ナシ婚」層や、事情があって式を挙げなかったカップル向け。スタジオ内で「誓いの言葉」を読み上げ、指輪交換を行う「二人だけの挙式」を行い、その様子をドキュメンタリータッチで撮影します。", img: "w3", tag: "Ceremony" },
-                    { title: "入籍フォト", desc: "婚姻届を提出するその日、その瞬間。新しい家族としての第一歩を、スタジオの柔らかな光の中で記録します。飾らない、ありのままの幸せをカタチに。", img: "w4", tag: "Daily" },
+                    { title: "2度目のプロポーズ", desc: "「実はちゃんとプロポーズしていない」「結婚式で誓いの言葉を言えなかった」というカップルのために、スタジオを完全貸切にして、二人きりで手紙を読み合う時間を作ります。カメラマンは遠くから望遠レンズで、お二人の邪魔をしないようにその空気を盗み撮りします。", img: "/images/plans/2度目のプロポーズ.JPG", tag: "Emotion" },
+                    { title: "写真だけの小さな結婚式", desc: "「ナシ婚」層や、事情があって式を挙げなかったカップル向け。スタジオ内で「誓いの言葉」を読み上げ、指輪交換を行う「二人だけの挙式」を行い、その様子をドキュメンタリータッチで撮影します。", img: "/images/plans/写真だけの小さな結婚式.jpg", tag: "Ceremony" },
+                    { title: "入籍フォト", desc: "婚姻届を提出するその日、その瞬間。新しい家族としての第一歩を、スタジオの柔らかな光の中で記録します。飾らない、ありのままの幸せをカタチに。", img: "/images/plans/入籍フォト.png", tag: "Daily" },
                   ].map((item, i) => (
                     <motion.div key={i} whileHover={{ y: -6 }} className="group bg-white rounded-[1.5rem] overflow-hidden border border-[#4E342E]/5 hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col">
                       <div className="aspect-[4/3] overflow-hidden">
-                        <img src={`https://picsum.photos/seed/wedding-${item.img}/800/600`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
+                        <img src={item.img.includes('/') ? item.img : `https://picsum.photos/seed/wedding-${item.img}/800/600`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
                       </div>
                       <div className="p-7 flex flex-col flex-grow">
                         <span className="text-[8px] uppercase tracking-[0.3em] opacity-30 px-2.5 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-4">{item.tag}</span>
@@ -262,14 +260,14 @@ export default function PatternJ() {
 
                 {/* Featured first card */}
                 {(() => {
-                  const item = { title: "ペット＆ファミリー貸切撮影", desc: "完全貸切のスタジオを活かした、ペットとのストレスフリーな撮影会。他の顧客と会わないため、大型犬や猫も安心して撮影できます。ペットも「家族のRoots」として捉え、肉球スタンプや、飼い主との自然な触れ合いを撮影します。", img: "f1", tag: "Pet" };
+                  const item = { title: "ペット＆ファミリー貸切撮影", desc: "完全貸切のスタジオを活かした、ペットとのストレスフリーな撮影会。他の顧客と会わないため、大型犬や猫も安心して撮影できます。ペットも「家族のRoots」として捉え、肉球スタンプや、飼い主との自然な触れ合いを撮影します。", img: "/images/plans/ペット＆ファミリー貸切撮影.jpg", tag: "Pet" };
                   return (
                     <motion.div
                       whileHover={{ y: -4 }}
                       className="group flex flex-col md:flex-row-reverse rounded-[2rem] overflow-hidden bg-[#F5F2ED] border border-[#4E342E]/5 shadow-sm hover:shadow-2xl transition-all duration-700 mb-6 cursor-pointer"
                     >
                       <div className="md:w-[55%] aspect-[4/3] md:aspect-auto overflow-hidden">
-                        <img src={`https://picsum.photos/seed/family-${item.img}/1200/900`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
+                        <img src={item.img.includes('/') ? item.img : `https://picsum.photos/seed/family-${item.img}/1200/900`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
                       </div>
                       <div className="md:w-[45%] p-7 md:p-14 flex flex-col justify-center">
                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 px-3 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-6">{item.tag}</span>
@@ -285,16 +283,13 @@ export default function PatternJ() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                   {[
-                    { title: "毎年帰る「定点観測」", desc: "結婚記念日、子供の誕生日など、毎年同じ時期に、同じ白い背景で、同じ構図で撮影するシンプルなプラン。継続することで、家族の成長が鮮明に浮かび上がります。", img: "f2", tag: "History" },
-                    { title: "プロジェクター投影撮影", desc: "スタジオの白い壁に、幼少期の写真や亡くなった祖父母の写真をプロジェクターで投影し、その映像の中で現在の二人が撮影するプランです。時空を超えた家族の共演を。", img: "f3", tag: "Projector" },
-                    { title: "親子三代「同じ構図」", desc: "親御さんの結婚当時の写真を持ってきてもらい、ポーズ・立ち位置・光の当たり方まで完全に再現する「オマージュ撮影」。世代を超えて受け継がれる愛を一枚の写真に。", img: "f4", tag: "Heritage" },
-                    { title: "声を飾るフォトフレーム", desc: "撮影時に「10年後の相手へのメッセージ」を録音。納品される写真はQRコード付きのアートフレームで、スマホをかざすとその時の「声」が再生されます。", img: "f5", tag: "Voice" },
-                    { title: "タイムカプセル開封撮影", desc: "幼少期にRoots Studioで撮影した子供が成人した際に、当時親御さんが書いた手紙を見ながら撮影するプラン。過去と未来を繋ぐ儀式です。", img: "f6", tag: "Future" },
-                    { title: "届かない手紙（グリーフケア）", desc: "亡くなったご家族や会えなくなった大切な人に向けた手紙を書き、思い出の品と共に撮影するプラン。悲しみを乗り越え、感謝を区切りとして残す撮影です。", img: "f7", tag: "Grief Care" },
+                    { title: "毎年帰る「定点観測」", desc: "結婚記念日、子供の誕生日など、毎年同じ時期に、同じ白い背景で、同じ構図で撮影するシンプルなプラン。継続することで、家族の成長が鮮明に浮かび上がります。", img: "/images/plans/毎年帰る「定点観測」.JPG", tag: "History" },
+                    { title: "プロジェクター投影撮影", desc: "スタジオの白い壁に、幼少期の写真や亡くなった祖父母の写真をプロジェクターで投影し、その映像の中で現在の二人が撮影するプランです。時空を超えた家族の共演を。", img: "https://images.unsplash.com/photo-1535016120720-40c646be5580?q=80&w=900&auto=format&fit=crop", tag: "Projector" },
+                    { title: "タイムカプセル開封撮影", desc: "幼少期にRoots Studioで撮影した子供が成人した際に、当時親御さんが書いた手紙を見ながら撮影するプラン。過去と未来を繋ぐ儀式です。", img: "https://images.unsplash.com/photo-1766366622533-7f12737f6af8?q=80&w=900&auto=format&fit=crop", tag: "Future" },
                   ].map((item, i) => (
                     <motion.div key={i} whileHover={{ y: -6 }} className="group bg-white rounded-[1.5rem] overflow-hidden border border-[#4E342E]/5 hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col">
                       <div className="aspect-[4/3] overflow-hidden">
-                        <img src={`https://picsum.photos/seed/family-${item.img}/800/600`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
+                        <img src={item.img.includes('/') ? item.img : `https://picsum.photos/seed/family-${item.img}/800/600`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
                       </div>
                       <div className="p-7 flex flex-col flex-grow">
                         <span className="text-[8px] uppercase tracking-[0.3em] opacity-30 px-2.5 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-4">{item.tag}</span>
@@ -327,14 +322,14 @@ export default function PatternJ() {
 
                 {/* Featured first card */}
                 {(() => {
-                  const item = { title: "起業・独立の「0日目」", desc: "会社設立、お店のオープン、フリーランス転向など、ビジネスの「出発点」を祝うプラン。あえて「まだ何もない状態」や「不安と希望が入り混じった表情」を撮影し、初心（Roots）として残します。ロゴ入りの名刺を持ったり、商売道具と撮ったりします。", img: "m1", tag: "Start-up" };
+                  const item = { title: "起業・独立の「0日目」", desc: "会社設立、お店のオープン、フリーランス転向など、ビジネスの「出発点」を祝うプラン。あえて「まだ何もない状態」や「不安と希望が入り混じった表情」を撮影し、初心（Roots）として残します。ロゴ入りの名刺を持ったり、商売道具と撮ったりします。", img: "/images/plans/ポートレート.png", tag: "Start-up" };
                   return (
                     <motion.div
                       whileHover={{ y: -4 }}
                       className="group flex flex-col md:flex-row rounded-[2rem] overflow-hidden bg-white border border-[#4E342E]/5 shadow-sm hover:shadow-2xl transition-all duration-700 mb-6 cursor-pointer"
                     >
                       <div className="md:w-[55%] aspect-[4/3] md:aspect-auto overflow-hidden">
-                        <img src={`https://picsum.photos/seed/myroots-${item.img}/1200/900`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
+                        <img src={item.img.includes('/') ? item.img : `https://picsum.photos/seed/myroots-${item.img}/1200/900`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
                       </div>
                       <div className="md:w-[45%] p-7 md:p-14 flex flex-col justify-center">
                         <span className="text-[9px] uppercase tracking-[0.3em] opacity-30 px-3 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-6">{item.tag}</span>
@@ -350,14 +345,13 @@ export default function PatternJ() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {[
-                    { title: "起業パートナーとの「結成式」", desc: "共同創業者やビジネスパートナーと撮るプラン。会社のロゴを持って創業の決意を宣言し、握手や背中合わせの写真を撮ります。共に歩む決意を、一枚の肖像に。", img: "m2", tag: "Partnership" },
-                    { title: "「私」を表現するポートレート", desc: "起業家のプロフィール写真や、独身の方のソロウェディング、あるいは「今の自分」を残したい方のためのプラン。ファッション誌のようなクオリティで「個」の魅力を引き出します。", img: "m3", tag: "Portrait" },
-                    { title: "あなただけの展覧会", desc: "趣味の道具・集めている本・楽器・思い出の服をスタジオ内にギャラリーのように配置し、まるで雑誌の特集ページや博物館の展示のような一枚を作ります。", img: "m4", tag: "Exhibition" },
-                    { title: "傷跡という勲章", desc: "手術の痕、帝王切開の傷、あるいは職人の手のシワなど、身体に刻まれた「生きた証（Roots）」にクローズアップする撮影。コンプレックスを美しいアートとして表現します。", img: "m5", tag: "Art" },
+                    { title: "起業パートナーとの「結成式」", desc: "共同創業者やビジネスパートナーと撮るプラン。会社のロゴを持って創業の決意を宣言し、握手や背中合わせの写真を撮ります。共に歩む決意を、一枚の肖像に。", img: "/images/plans/起業パートナーとの「結成式」.JPG", tag: "Partnership" },
+                    { title: "「私」を表現するポートレート", desc: "起業家のプロフィール写真や、独身の方のソロウェディング、あるいは「今の自分」を残したい方のためのプラン。ファッション誌のようなクオリティで「個」の魅力を引き出します。", img: "/images/plans/MyRoots.jpg", tag: "Portrait" },
+                    { title: "あなただけの展覧会", desc: "趣味の道具・集めている本・楽器・思い出の服をスタジオ内にギャラリーのように配置し、まるで雑誌の特集ページや博物館の展示のような一枚を作ります。", img: "/images/plans/あなただけの展覧会.JPG", tag: "Exhibition" },
                   ].map((item, i) => (
                     <motion.div key={i} whileHover={{ y: -6 }} className="group bg-white rounded-[1.5rem] overflow-hidden border border-[#4E342E]/5 hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col">
                       <div className="aspect-[16/9] overflow-hidden">
-                        <img src={`https://picsum.photos/seed/myroots-${item.img}/1000/600`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
+                        <img src={item.img.includes('/') ? item.img : `https://picsum.photos/seed/myroots-${item.img}/1000/600`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={item.title} referrerPolicy="no-referrer" />
                       </div>
                       <div className="p-8 flex flex-col flex-grow">
                         <span className="text-[8px] uppercase tracking-[0.3em] opacity-30 px-2.5 py-1 border border-[#4E342E]/10 rounded-full w-fit mb-4">{item.tag}</span>
@@ -668,9 +662,9 @@ export default function PatternJ() {
               </motion.div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12">
                 {[
-                  { title: "Wedding", src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=900&auto=format&fit=crop", desc: "誓いの瞬間" },
-                  { title: "Family", src: "https://images.unsplash.com/photo-1491013516836-7db643ee125a?q=80&w=900&auto=format&fit=crop", desc: "家族の絆" },
-                  { title: "My Roots", src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=900&auto=format&fit=crop", desc: "自分らしさの探究" }
+                  { title: "Wedding", src: "/images/plans/写真だけの小さな結婚式.jpg", desc: "誓いの瞬間" },
+                  { title: "Family", src: "/images/plans/トップ_Family.png", desc: "家族の絆" },
+                  { title: "My Roots", src: "/images/plans/MyRoots.jpg", desc: "自分らしさの探究" }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
